@@ -25,7 +25,7 @@ function create_indicator(otype, ind_type, value, me) {
             'obj_type': otype
         };
     }
-    url = "{% url 'crits.indicators.views.indicator_from_tlo' %}";
+    url = "{% url 'crits-indicators-views-indicator_from_tlo' %}";
     $.ajax({
         type: "POST",
         url: url,
@@ -146,7 +146,7 @@ $(document).ready(function() {
         }
         $.ajax({
             type: "POST",
-            url: "{% url 'misp_service.views.get_relationships' subscription.type subscription.id %}",
+            url: "{% url 'misp_service-views-get_relationships' subscription.type subscription.id %}",
             dataType: "json",
             data: data,
             async: false,
@@ -183,7 +183,7 @@ $(document).ready(function() {
             data: { 'name': name,
                     'nodes': JSON.stringify(data),
                     'confidence': confidence },
-            url: "{% url 'misp_service.views.add_campaign_misp' %}",
+            url: "{% url 'misp_service-views-add_campaign_misp' %}",
             success: function(data) {
                 $('#campaign_results').text(data.message);
             }
@@ -282,7 +282,7 @@ $(document).ready(function() {
         //Send it to views (based on URLs structure)
         $.ajax({
             type: "POST",
-            url: "{% url 'misp_service.views.send_to_misp'%}",
+            url: "{% url 'misp_service-views-send_to_misp'%}",
             dataType: "json",
             data: data,
             async: false,
@@ -356,7 +356,7 @@ $(document).ready(function() {
         // Get list of campaigns for selection.
         $.ajax({
             type: "GET",
-            url: "{% url 'crits.campaigns.views.campaign_names' %}",
+            url: "{% url 'crits-campaigns-views-campaign_names' %}",
             async: false,
             success: function(data) {
                 $.each(data, function (index, value) {
